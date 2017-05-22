@@ -18,14 +18,15 @@
 import tempfile, uuid, re, os, sys, cherrypy, pymotherless, argparse, time, datetime;
 if(sys.version[0]=="2"):
  try:
-  from cStringIO import StringIO;
+  from io import StringIO;
  except ImportError:
-  from StringIO import StringIO;
+  from io import StringIO;
  # From http://python-future.org/compatible_idioms.html
- from urlparse import urlparse, urlunparse, urlsplit, urlunsplit, urljoin;
- from urllib import urlencode;
- from urllib2 import urlopen, Request, HTTPError;
- import urllib2, urlparse, cookielib;
+ from urllib.parse import urlparse, urlunparse, urlsplit, urlunsplit, urljoin;
+ from urllib.parse import urlencode;
+ from urllib.request import urlopen, Request
+ from urllib.error import HTTPError;
+ import urllib.request, urllib.error, urllib.parse, urllib.parse, http.cookiejar;
 if(sys.version[0]>="3"):
  from io import StringIO, BytesIO;
  # From http://python-future.org/compatible_idioms.html
@@ -134,7 +135,7 @@ class GenerateIndexPage(object):
  @cherrypy.expose
  def default(self, *args, **kwargs):
   cherrypy.response.headers['Content-Type'] = 'text/html; charset=UTF-8';
-  getpyurlpath = urlparse.urlparse(cherrypy.url()).path;
+  getpyurlpath = urllib.parse.urlparse(cherrypy.url()).path;
   getpymotherless = "http://motherless.com"+getpyurlpath;
   pymotherlessinfo = pymotherless.get_motherless_link_type_alt(getpymotherless);
   IndexHTMLCode = getpyurlpath+" - "+pymotherlessinfo['motherlessinfo'];
@@ -229,7 +230,7 @@ class GenerateIndexPage(object):
    IndexHTMLCode = IndexHTMLCode+"<div><br />&nbsp;<br /></div>\n";
    counti = 1;
    maxi = getpyurlinfo['pages'];
-   print(str(maxi));
+   print((str(maxi)));
    while(counti<maxi):
     IndexHTMLCode = IndexHTMLCode+" <a href=\"?page="+str(counti)+"\">"+str(counti)+"</a>\n";
     counti = counti + 1;
@@ -250,7 +251,7 @@ class GenerateIndexPage(object):
    IndexHTMLCode = IndexHTMLCode+"<div><br />&nbsp;<br /></div>\n";
    counti = 1;
    maxi = getpyurlinfo['pages'];
-   print(str(maxi));
+   print((str(maxi)));
    while(counti<maxi):
     IndexHTMLCode = IndexHTMLCode+" <a href=\"?page="+str(counti)+"\">"+str(counti)+"</a>\n";
     counti = counti + 1;
@@ -271,7 +272,7 @@ class GenerateIndexPage(object):
    IndexHTMLCode = IndexHTMLCode+"<div><br />&nbsp;<br /></div>\n";
    counti = 1;
    maxi = getpyurlinfo['pages'];
-   print(str(maxi));
+   print((str(maxi)));
    while(counti<maxi):
     IndexHTMLCode = IndexHTMLCode+" <a href=\"?page="+str(counti)+"\">"+str(counti)+"</a>\n";
     counti = counti + 1;

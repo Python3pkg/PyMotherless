@@ -15,7 +15,7 @@
     $FileInfo: pypkg-gen.py - Last Update: 6/1/2016 Ver. 0.2.0 RC 1 - Author: cooldude2k $
 '''
 
-from __future__ import absolute_import, division, print_function, unicode_literals;
+;
 import re, os, sys, time, platform, datetime, argparse, subprocess;
 
 __version_info__ = (0, 2, 0, "rc1");

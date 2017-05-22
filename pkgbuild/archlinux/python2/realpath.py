@@ -15,7 +15,7 @@
     $FileInfo: realpath.py - Last Update: 2/15/2016 Ver. 0.0.5 RC 3 - Author: cooldude2k $
 '''
 
-from __future__ import absolute_import, division, print_function, unicode_literals;
+;
 import os, sys, argparse;
 
 __version_info__ = (0, 0, 5, "rc3");

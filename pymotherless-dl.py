@@ -16,7 +16,7 @@
     $FileInfo: pymotherless-dl.py - Last Update: 6/16/2016 Ver. 0.4.7 RC 1 - Author: cooldude2k $
 '''
 
-from __future__ import division, absolute_import, print_function;
+;
 import re, os, sys, pymotherless, argparse;
 import logging as log;
 
